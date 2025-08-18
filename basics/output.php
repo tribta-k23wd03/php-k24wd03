@@ -14,7 +14,7 @@ if ($item !== null) {
 
 if (!empty($_COOKIE["Cart"])) {
     echo "Cart:<br/>";
-    foreach ($_COOKIE["count"] as $i => $prod) {
-        echo "Item $i: " . $prod . "<br/>";
+    foreach ($_COOKIE["Cart"] as $i => $prod) {
+        echo "Item $i: " . htmlspecialchars($prod) . "<br/>";
     }
 }
