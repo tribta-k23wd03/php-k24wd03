@@ -1,0 +1,10 @@
+table {
+  border: 1px solid black;
+}
+
+.Type-Dog {
+  color: blue;
+}
+.Type-Cat {
+  color: red;
+}
