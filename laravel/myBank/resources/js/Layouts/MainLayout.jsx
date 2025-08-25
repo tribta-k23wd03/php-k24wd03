@@ -11,13 +11,13 @@ export default function MainLayout({ children }) {
                 <div style={{ marginLeft: 'auto', display: 'flex', gap: 12 }}>
                     {user ? (
                         <>
-                            <Link>Dashboard</Link>
-                            <Link>Logout</Link>
+                            <Link href={'/dashboard'}>Dashboard</Link>
+                            <Link href={'/logout'}>Logout</Link>
                         </>
                     ) : (
                         <>
-                            <Link>Login</Link>
-                            <Link>Register</Link>
+                            <Link href={'/login'}>Login</Link>
+                            <Link href={'/register'}>Register</Link>
                         </>
                     )}
                 </div>

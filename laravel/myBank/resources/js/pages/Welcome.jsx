@@ -6,7 +6,7 @@ function Welcome({ appName }) {
             <div className="card">
                 <h1>{appName}</h1>
                 <p>Welcome to my Bank.</p>
-                <a href="#">Login</a> | <a href="#">Register</a>
+                <a href="/login">Login</a> | <a href="/register">Register</a>
             </div>
         </MainLayout>
     );
