@@ -1,8 +1,8 @@
-import { useForm } from '@inertiajs/react';
+import { Link, useForm } from '@inertiajs/react';
 import MainLayout from '../../Layouts/MainLayout';
 
 function Login() {
-    const { data, setData, post, processing, errors, reset } = useForm();
+    const { data, setData, post, processing, errors, reset } = useForm({ name: '', email: '', password: '', remember: false });
 
     const submit = (e) => {
         e.preventDefault();
@@ -37,6 +37,9 @@ function Login() {
                         {processing ? 'Login is processing...' : 'Login'}
                     </button>
                 </form>
+                <p>
+                    Haven't Register Yet? <Link href={'/register'}>Create New Account</Link>
+                </p>
             </div>
         </MainLayout>
     );

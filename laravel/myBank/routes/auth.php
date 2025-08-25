@@ -20,5 +20,5 @@ Route::middleware("auth")->group(function () {
         return Inertia::render('Dashboard');
     });
 
-    Route::post("/logout", [AuthenticatedSessionController::class, "#"]);
+    Route::post("/logout", [AuthenticatedSessionController::class, "destroy"]);
 });
