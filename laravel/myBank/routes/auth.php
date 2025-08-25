@@ -16,9 +16,10 @@ Route::middleware("guest")->group(function () {
 
 Route::middleware("auth")->group(function () {
 
-    Route::get("/dashboard", function () {
-        return Inertia::render('Dashboard');
-    });
 
     Route::post("/logout", [AuthenticatedSessionController::class, "destroy"]);
+});
+
+Route::get("/dashboard", function () {
+    return Inertia::render('Dashboard')->middleware("auth");
 });

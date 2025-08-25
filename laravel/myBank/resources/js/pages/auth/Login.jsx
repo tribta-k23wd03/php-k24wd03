@@ -2,7 +2,7 @@ import { Link, useForm } from '@inertiajs/react';
 import MainLayout from '../../Layouts/MainLayout';
 
 function Login() {
-    const { data, setData, post, processing, errors, reset } = useForm({ name: '', email: '', password: '', remember: false });
+    const { data, setData, post, processing, errors, reset } = useForm({ email: '', password: '', remember: false });
 
     const submit = (e) => {
         e.preventDefault();
@@ -21,6 +21,7 @@ function Login() {
                     <div className="form-row" style={{ flexDirection: 'column' }}>
                         <label htmlFor="password">Password</label>
                         <input
+                            autoComplete="true"
                             id="password"
                             type="password"
                             className="input"
@@ -31,7 +32,7 @@ function Login() {
                     </div>
                     <div className="form-row" style={{ display: 'flex', gap: 4 }}>
                         <label htmlFor="remember">Remember me</label>
-                        <input type="checkbox" id="remember" checked={data.remember} onChange={(e) => setData(e.target.checked)} />
+                        <input type="checkbox" id="remember" checked={data.remember} onChange={(e) => setData('remember', e.target.checked)} />
                     </div>
                     <button type="submit" className="btn" disabled={processing}>
                         {processing ? 'Login is processing...' : 'Login'}

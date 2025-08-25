@@ -1,4 +1,4 @@
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import MainLayout from '../Layouts/MainLayout';
 
 function Dashboard() {
