@@ -15,10 +15,24 @@ Route::middleware("guest")->group(function () {
 });
 
 Route::middleware("auth")->group(function () {
-
-
     Route::get("/dashboard", function () {
         return Inertia::render('Dashboard');
     });
     Route::post("/logout", [AuthenticatedSessionController::class, "destroy"]);
+
+    // Accounts
+    Route::get('/accounts');
+    Route::get('/accounts/create');
+    Route::post('/accounts');
+
+    // Transactions
+    Route::get('/transactions');
+
+    // Deposit
+    Route::get('/transactions/deposit');
+    Route::post('/transactions/deposit');
+
+    // Withdraw
+    Route::get('/transactions/withdraw');
+    Route::post('/transactions/withdraw');
 });
