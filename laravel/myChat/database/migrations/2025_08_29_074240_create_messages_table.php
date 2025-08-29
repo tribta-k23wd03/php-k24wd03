@@ -14,6 +14,18 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->text('body')->nullable();
+
+            $table->foreignId('conversation_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->foreignId('user_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->index(['conversation_id', 'created_at']);
         });
     }
 
