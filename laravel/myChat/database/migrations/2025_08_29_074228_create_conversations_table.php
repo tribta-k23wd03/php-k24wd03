@@ -14,6 +14,15 @@ return new class extends Migration
         Schema::create('conversations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('name')->nullable();
+            $table->boolean('is_direct')->default(true);
+
+            $table->foreignId('created_by')
+                ->constrained('users')
+                ->cascadeOnDelete();
+
+            $table->index(['is_direct', 'updated_at']);
         });
     }
 
