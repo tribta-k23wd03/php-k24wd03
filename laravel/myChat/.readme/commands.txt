@@ -1,15 +1,5 @@
 php artisan make:model Conversation -m
 
- 
+php artisan make:model Message -m     
 
-PS C:\dez\k24wd03\php\php-k24wd03\laravel\myChat> php artisan make:model Message -m     
-
-   INFO  Model [C:\dez\k24wd03\php\php-k24wd03\laravel\myChat\app\Models\Message.php] created successfully.  
-
-   INFO  Migration [C:\dez\k24wd03\php\php-k24wd03\laravel\myChat\database\migrations\2025_08_29_074240_create_messages_table.php] created successfully.
-
-PS C:\dez\k24wd03\php\php-k24wd03\laravel\myChat> php artisan make:migration create_conversation_user_table 
-
-   INFO  Migration [C:\dez\k24wd03\php\php-k24wd03\laravel\myChat\database\migrations\2025_08_29_074313_create_conversation_user_table.php] created successfully.
-
-PS C:\dez\k24wd03\php\php-k24wd03\laravel\myChat> 
+php artisan make:migration create_conversation_user_table 
