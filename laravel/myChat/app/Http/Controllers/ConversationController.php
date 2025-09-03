@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Conversation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -33,4 +34,31 @@ class ConversationController extends Controller
             'users' => $users
         ]);
     }
+
+    public function show(Request $request, Conversation $conversation): Response
+    {
+        $userId = $request->user()->id;
+        abort_unless($conversation->isParticipant($userId), 403);
+
+        $messages = $conversation
+            ->messages()
+            ->with('user:id,name,email')
+            ->orderBy('created_at')
+            ->get();
+
+        $conversations = $request
+            ->user()
+            ->conversations()
+            ->with(['lastMessage.user:id,name'])
+            ->orderByDesc('updated_at')
+            ->get();
+
+        return Inertia::render('Chat/Show', [
+            'userId' => $userId,
+            'messages' => $messages,
+            'conversations' => $conversations->only(['id', 'name', 'is_direct'])
+        ]);
+    }
+
+    public function store() {}
 }
