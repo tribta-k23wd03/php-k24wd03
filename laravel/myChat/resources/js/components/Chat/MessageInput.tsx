@@ -1,5 +1,8 @@
 // @ts-nocheck
 
+import { useForm } from '@inertiajs/react';
+import { useRef } from 'react';
+
 export default function MessageInput({ conversationId }) {
     const inputRef = useRef(null);
     const { data, setData, post, processing, reset, clearErrors } = useForm({

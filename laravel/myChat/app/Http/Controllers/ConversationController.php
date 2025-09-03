@@ -45,7 +45,7 @@ class ConversationController extends Controller
             ->messages()
             ->with('user:id,name,email')
             ->orderBy('created_at')
-            ->get();
+            ->paginate(50);
 
         $conversations = $request
             ->user()

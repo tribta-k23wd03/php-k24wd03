@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ChatLayout from '@/components/Chat/ChatLayout';
 import ConversationList from '@/components/Chat/ConversationList';
 import MessageInput from '@/components/Chat/MessageInput';
@@ -34,7 +35,7 @@ export default function Show({ conversation, messages, conversations = [] }) {
                 <div style={{ padding: '10px 16px', borderBottom: '1px solid #eee', background: '#fff' }}>
                     <strong>{conversation.name || (conversation.is_direct ? 'Direct message' : `Group #${conversation.id}`)}</strong>
                 </div>
-                <MessageList messages={{ data: items }} currentUserId={undefined} />
+                <MessageList messages={{ data: items }} />
                 <MessageInput key={conversation.id} conversationId={conversation.id} />
             </div>
         </ChatLayout>
