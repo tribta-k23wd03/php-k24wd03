@@ -55,9 +55,9 @@ class ConversationController extends Controller
             ->get();
 
         return Inertia::render('Chat/Show', [
-            'userId' => $userId,
+            'conversation' => $conversation->only(['id', 'name', 'is_direct']),
             'messages' => $messages,
-            'conversations' => $conversations->only(['id', 'name', 'is_direct'])
+            'conversations' => $conversations
         ]);
     }
 
