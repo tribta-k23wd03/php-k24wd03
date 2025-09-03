@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Conversation;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -60,5 +61,27 @@ class ConversationController extends Controller
         ]);
     }
 
-    public function store() {}
+    public function store(Request $request): RedirectResponse
+    {
+        $userId = $request->user()->id;
+
+        $data = $request->validate([
+            'user_ids' => ['array', 'required', 'min:1'],
+            'user_ids.*' => ['integer', 'exists:users,id', 'different:' . $userId],
+            'name' => ['nullable', 'string', 'max:255']
+        ]);
+        $isDirect = count($data['user_ids']) === 1;
+
+        $conversation = Conversation::create([
+            'name' => $isDirect ? null : ($data(['name']) ?? null),
+            'is_direct' => $isDirect,
+            'created_by' => $userId
+        ]);
+
+        $conversation
+            ->users()
+            ->sync(array_unique([...$data['user_ids'], $userId]));
+
+        return redirect()->route('chat.store', $conversation);
+    }
 }
