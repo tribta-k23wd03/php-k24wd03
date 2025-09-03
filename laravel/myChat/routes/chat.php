@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ConversationController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
@@ -17,5 +18,6 @@ Route::middleware('auth')->group(function () {
         ->name('chat.store');
 
     // Create new message
-    Route::post('/message');
+    Route::post('/message', [MessageController::class, 'store'])
+        ->name('message.store');
 });
