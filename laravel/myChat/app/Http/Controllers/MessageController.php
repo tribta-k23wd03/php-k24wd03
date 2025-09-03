@@ -29,6 +29,6 @@ class MessageController extends Controller
         MessageCreated::dispatch($created);
         $conversation->touch();
 
-        return to_route('chat.show');
+        return to_route('chat.show', $conversation)->setStatusCode(303);
     }
 }

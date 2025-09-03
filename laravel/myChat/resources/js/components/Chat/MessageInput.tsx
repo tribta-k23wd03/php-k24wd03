@@ -15,10 +15,9 @@ export default function MessageInput({ conversationId }) {
 
         if (!data.body.trim()) return;
 
-        post('/messages', {
+        post('/message', {
             preserveScroll: true,
             preserveState: false,
-
             onSuccess: () => reset('body'),
             onFinish: () => {
                 clearErrors();
