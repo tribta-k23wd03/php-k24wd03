@@ -15,7 +15,7 @@ export default function NewConversation({ users = [] }) {
     };
 
     const submit = (e) => {
-        e.prevenDefault();
+        e.preventDefault();
         const payload = {
             user_ids: data.user_ids,
             name: data.user_ids.length >= 2 ? groupName || undefined : undefined,

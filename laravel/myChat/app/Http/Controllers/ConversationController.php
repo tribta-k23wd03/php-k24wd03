@@ -73,7 +73,7 @@ class ConversationController extends Controller
         $isDirect = count($data['user_ids']) === 1;
 
         $conversation = Conversation::create([
-            'name' => $isDirect ? null : ($data(['name']) ?? null),
+            'name' => $isDirect ? null : ($data['name'] ?? null),
             'is_direct' => $isDirect,
             'created_by' => $userId
         ]);
@@ -82,6 +82,6 @@ class ConversationController extends Controller
             ->users()
             ->sync(array_unique([...$data['user_ids'], $userId]));
 
-        return redirect()->route('chat.store', $conversation);
+        return redirect()->route('chat.show', $conversation);
     }
 }
